@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: url("/assets/bg.jpeg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* HEADER */
+.header {
+  height: 90px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(12px);
+}
+
+.logo-circle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-circle img {
+  width: 34px;
+}
+
+.brand-name {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.dashboard-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #4f46e5;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* SEARCH */
+.search-section {
+  max-width: 1100px;
+  margin: 30px auto;
+  display: flex;
+  gap: 18px;
+  padding: 0 20px;
+}
+
+.search-section input,
+.search-section select {
+  padding: 16px 22px;
+  border-radius: 40px;
+  border: none;
+  background: white;
+}
+
+/* TABS */
+.tabs {
+  max-width: 1100px;
+  margin: 10px auto 30px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.tabs button {
+  padding: 10px 24px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+.tabs .active {
+  background: #4f46e5;
+  color: white;
+}
+
+/* FEED */
+.feed {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 20px 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.post {
+  background: rgba(255,255,255,0.95);
+  padding: 18px;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.post:hover {
+  transform: translateY(-4px);
+}
+
+.post img {
+  width: 100%;
+  border-radius: 12px;
+  margin: 10px 0;
+}
+
+.desc {
+  font-size: 14px;
+  margin: 10px 0;
+}

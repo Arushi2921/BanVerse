@@ -1,0 +1,201 @@
+/* =========================
+   GLOBAL
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: url("/assets/bg.jpeg") no-repeat center center fixed;
+    background-size: cover;
+    color: #1f2937;
+    min-height: 100vh;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+    height: 90px;
+    padding: 0 40px;
+    background: rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-circle {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.logo-circle img {
+    width: 34px;
+}
+
+.brand-name {
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* =========================
+   LOGOUT CIRCLE
+========================= */
+.logout-circle {
+    width: 90px;
+    height: 42px;
+    border-radius: 50px;
+    background: #ef4444;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.logout-circle:hover {
+    background: #dc2626;
+    transform: scale(1.05);
+}
+
+/* =========================
+   PROFILE CONTAINER
+========================= */
+.profile-container {
+    max-width: 520px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.profile-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 32px 30px;
+    border-radius: 22px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.profile-box:hover {
+    transform: translateY(-3px);
+}
+
+/* =========================
+   FORM ELEMENTS
+========================= */
+.profile-box label {
+    display: block;
+    margin-top: 16px;
+    font-weight: 500;
+    align-self: flex-start;
+    color: #374151;
+}
+
+.profile-box input,
+.profile-box textarea,
+.profile-box select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    margin-top: 6px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-box input:focus,
+.profile-box textarea:focus,
+.profile-box select:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 8px rgba(79, 70, 229, 0.3);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+/* =========================
+   IMAGE PREVIEW
+========================= */
+.preview-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: none;
+    margin-top: 15px;
+    border: 3px solid #4f46e5;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+button {
+    margin-top: 28px;
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    border: none;
+    background: #4f46e5;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+button:hover {
+    background: #6366f1;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 600px) {
+    .header {
+        padding: 0 20px;
+    }
+
+    .brand-name {
+        font-size: 22px;
+    }
+
+    .profile-container {
+        margin: 30px auto;
+    }
+
+    .preview-img {
+        width: 110px;
+        height: 110px;
+    }
+}

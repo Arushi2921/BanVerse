@@ -1,0 +1,274 @@
+/* =========================
+   GLOBAL
+========================= */
+body {
+    background: url("/assets/bg.jpeg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: "Poppins", sans-serif;
+    color: #1f2937;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+    height: 90px;
+    padding: 0 40px;
+    background: rgba(255,255,255,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-circle {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-circle img {
+    width: 34px;
+}
+
+.brand-name {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.logout-circle {
+    width: 100px;
+    height: 42px;
+    border-radius: 50px;
+    background: #ef4444;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-circle:hover {
+    background: #dc2626;
+    transform: scale(1.05);
+}
+
+/* =========================
+   DASHBOARD CONTAINER
+========================= */
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+    padding: 0 20px;
+}
+
+/* =========================
+   CLUB PROFILE CARD
+========================= */
+.club-card {
+    background: rgba(255,255,255,0.95);
+    padding: 28px;
+    border-radius: 25px;
+    width: 340px;
+    text-align: center;
+    box-shadow: 0 18px 38px rgba(0,0,0,0.12);
+}
+
+.club-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #4f46e5;
+}
+
+.club-card h3 {
+    margin-top: 15px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.club-card p {
+    margin: 8px 0;
+    font-size: 15px;
+    color: #374151;
+}
+
+/* =========================
+   CLUB DETAILS
+========================= */
+.club-details {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #374151;
+}
+
+.club-details p {
+    margin: 4px 0;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 8px;
+}
+
+.social-links a {
+    color: #4f46e5;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   CREATE POST BUTTON
+========================= */
+.post-btn {
+    margin-top: 20px;
+    padding: 12px 0;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    background: #16a34a;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.post-btn:hover {
+    background: #22c55e;
+    transform: scale(1.03);
+}
+
+/* =========================
+   POSTS SECTION
+========================= */
+.posts-section {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.posts-section h2 {
+    margin-bottom: 15px;
+    color: #4f46e5;
+}
+
+/* =========================
+   POSTS GRID (ROW × COLUMN)
+========================= */
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* =========================
+   POST CARD
+========================= */
+.post-card {
+    background: rgba(255,255,255,0.95);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-6px);
+}
+
+.post-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* =========================
+   POST CONTENT
+========================= */
+.post-content {
+    padding: 15px;
+}
+
+.post-content h4 {
+    margin-bottom: 6px;
+    font-size: 18px;
+}
+
+.post-content p {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* =========================
+   POST ACTIONS
+========================= */
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.edit-btn {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background: #6366f1;
+}
+
+.delete-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #dc2626;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .club-card {
+        width: 100%;
+    }
+}
