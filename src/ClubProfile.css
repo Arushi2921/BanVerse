@@ -9,7 +9,7 @@
 }
 
 body {
-    background: url("/assets/bg.jpeg") no-repeat center center fixed;
+    background: url("./assets/bg.jpeg") no-repeat center center fixed;
     background-size: cover;
     color: #1f2937;
     min-height: 100vh;

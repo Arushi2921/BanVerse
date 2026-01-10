@@ -40,7 +40,7 @@ const ClubDashboard = () => {
 
   const logout = () => {
     localStorage.removeItem("role");
-    window.location.href = "login.html";
+    window.location.href = "login.jsx";
   };
 
   const deletePost = (id) => {

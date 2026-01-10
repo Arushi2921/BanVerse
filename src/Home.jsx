@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/Home.css";
+import "./Home.css";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -23,17 +23,17 @@ function Home() {
   });
 
   const goToProfile = () => {
-    if (role === "student") navigate("/student-profile");
-    else if (role === "club") navigate("/club-profile");
-    else if (role === "admin") navigate("/admin-profile");
-    else navigate("/login");
+    if (role === "student") navigate("/studentprofile");
+    else if (role === "club") navigate("/clubprofile");
+    else if (role === "admin") navigate("/adminprofile");
+    else navigate("/Login");
   };
 
   const goToDashboard = () => {
-    if (role === "student") navigate("/student-dashboard");
-    else if (role === "club") navigate("/club-dashboard");
-    else if (role === "admin") navigate("/admin-dashboard");
-    else navigate("/login");
+    if (role === "student") navigate("/studentdashboard");
+    else if (role === "club") navigate("/clubdashboard");
+    else if (role === "admin") navigate("/admindashboard");
+    else navigate("/Login");
   };
 
   const openPost = (index) => {
@@ -47,7 +47,7 @@ function Home() {
       <header className="header">
         <div className="header-left">
           <div className="logo-circle">
-            <img src="/assets/logo.png" alt="Banverse" />
+            <img src="./assets/logo.png" alt="Banverse" />
           </div>
           <span className="brand-name">Banverse</span>
         </div>

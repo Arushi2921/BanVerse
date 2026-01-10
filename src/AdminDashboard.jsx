@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../src/admin.css";
-import logo from "./logo.png";
+import "./admin.css";
+import logo from "./assets/logo.png";
+
 
 function AdminDashboard() {
   const [pendingClubs, setPendingClubs] = useState([]);
