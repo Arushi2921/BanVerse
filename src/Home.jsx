@@ -51,10 +51,19 @@ function Home() {
           </div>
           <span className="brand-name">Banverse</span>
         </div>
-        <div className="dashboard-circle" onClick={goToProfile}>👤</div>
+
+        <nav className="nav-menu">
+          <button className="nav-item active">Home</button>
+          <button className="nav-item" onClick={() => navigate("/about")}>About</button>
+          <button className="nav-item" onClick={() => navigate("/contact")}>Contact</button>
+          <button className="nav-item" onClick={goToDashboard}>Dashboard</button>
+        </nav>
+
+        <div className="header-right">
+          <div className="dashboard-circle" onClick={goToProfile}>👤</div>
+        </div>
       </header>
 
-      {/* ===== SEARCH & FILTER ===== */}
       <section className="search-section">
         <input
           type="text"
@@ -71,14 +80,6 @@ function Home() {
           <option value="other">Other</option>
         </select>
       </section>
-
-      {/* ===== TABS ===== */}
-      <nav className="tabs">
-        <button className="active">Home</button>
-        <button onClick={() => navigate("/about")}>About</button>
-        <button onClick={() => navigate("/contact")}>Contact</button>
-        <button onClick={goToDashboard}>Dashboard</button>
-      </nav>
 
       {/* ===== POSTS GRID ===== */}
       <main className="feed">

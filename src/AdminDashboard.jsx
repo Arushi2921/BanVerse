@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "./admin.css";
 import logo from "./assets/logo.png";
 
-
 function AdminDashboard() {
   const [pendingClubs, setPendingClubs] = useState([]);
   const [posts, setPosts] = useState([]);
@@ -15,43 +14,37 @@ function AdminDashboard() {
   }, []);
 
   const approveClub = (id) => {
-    let pending = [...pendingClubs];
-    let clubs = JSON.parse(localStorage.getItem("clubs")) || [];
-
-    const club = pending.find(c => c.id === id);
-    if (!club) return;
+    const pending = pendingClubs.filter(c => c.id !== id);
+    const club = pendingClubs.find(c => c.id === id);
+    const clubs = JSON.parse(localStorage.getItem("clubs")) || [];
 
     clubs.push(club);
     localStorage.setItem("clubs", JSON.stringify(clubs));
-
-    pending = pending.filter(c => c.id !== id);
     localStorage.setItem("pendingClubs", JSON.stringify(pending));
 
     setPendingClubs(pending);
-    alert(`${club.name} approved!`);
   };
 
   const rejectClub = (id) => {
     const updated = pendingClubs.filter(c => c.id !== id);
     localStorage.setItem("pendingClubs", JSON.stringify(updated));
     setPendingClubs(updated);
-    alert("Club rejected");
   };
 
   const deletePost = (id) => {
     const updated = posts.filter(p => p.id !== id);
     localStorage.setItem("posts", JSON.stringify(updated));
     setPosts(updated);
-    alert("Post deleted");
   };
 
   const logout = () => {
-    localStorage.removeItem("role");
+    localStorage.clear();
     navigate("/login");
   };
 
   return (
     <>
+      {/* HEADER */}
       <header className="header">
         <div className="header-left">
           <div className="logo-circle">
@@ -59,41 +52,93 @@ function AdminDashboard() {
           </div>
           <span className="brand-name">Banverse Admin</span>
         </div>
-        <div className="logout-circle" onClick={logout}>Logout</div>
+
+        <nav className="nav-menu">
+          <button className="nav-item active">Dashboard</button>
+          <button className="nav-item" onClick={() => navigate("/adminprofile")}>Profile</button>
+          <button className="nav-item" onClick={logout}>Logout</button>
+        </nav>
+
+        <div className="header-right">
+        </div>
       </header>
 
-      <main className="dashboard-container">
-        {/* Pending Clubs */}
-        <section className="pending-clubs">
-          <h3>Pending Clubs</h3>
+      {/* DASHBOARD */}
+      <main className="dashboard">
+        {/* Dashboard Header */}
+        <div className="dashboard-header">
+          <h2>Admin Dashboard</h2>
+          <p>Manage clubs and monitor activities</p>
+        </div>
 
-          {pendingClubs.length === 0 && <p>No pending clubs</p>}
+        {/* Statistics */}
+        <div className="stats-container">
+          <div className="stat-card">
+            <div className="stat-number">{pendingClubs.length}</div>
+            <div className="stat-label">Pending Clubs</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-number">{posts.length}</div>
+            <div className="stat-label">Total Posts</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-number">
+              {(JSON.parse(localStorage.getItem("clubs")) || []).length}
+            </div>
+            <div className="stat-label">Approved Clubs</div>
+          </div>
+        </div>
+
+        {/* Pending Clubs */}
+        <section className="card">
+          <h3>📋 Pending Clubs</h3>
+
+          {pendingClubs.length === 0 && (
+            <p className="empty">✨ No pending requests at the moment</p>
+          )}
 
           {pendingClubs.map(club => (
-            <div className="club-card" key={club.id}>
-              <h4>{club.name}</h4>
-              <p>Email: {club.email}</p>
-              <p>{club.description}</p>
-              <button onClick={() => approveClub(club.id)}>Approve</button>
-              <button onClick={() => rejectClub(club.id)}>Reject</button>
+            <div className="item-card" key={club.id}>
+              <div className="item-content">
+                <h4>{club.name}</h4>
+                <p className="muted">📧 {club.email}</p>
+                <p>{club.description}</p>
+              </div>
+
+              <div className="actions">
+                <button className="approve" onClick={() => approveClub(club.id)}>
+                  ✓ Approve
+                </button>
+                <button className="reject" onClick={() => rejectClub(club.id)}>
+                  ✗ Reject
+                </button>
+              </div>
             </div>
           ))}
         </section>
 
-        {/* All Posts */}
-        <section className="all-posts">
-          <h3>Club Posts</h3>
+        {/* Posts */}
+        <section className="card">
+          <h3>📰 Club Posts</h3>
 
-          {posts.length === 0 && <p>No posts available</p>}
+          {posts.length === 0 && (
+            <p className="empty">📭 No posts available</p>
+          )}
 
           {posts.map(post => (
-            <div className="post-card" key={post.id}>
-              <h4>{post.title}</h4>
-              <p>By: {post.clubName}</p>
-              <p>{post.desc}</p>
-              <p>Date: {post.date} | Time: {post.time}</p>
-              <p>Venue: {post.venue}</p>
-              <button onClick={() => deletePost(post.id)}>Delete Post</button>
+            <div className="item-card" key={post.id}>
+              <div className="item-content">
+                <h4>{post.title}</h4>
+                <p className="muted">
+                  🏢 {post.clubName} • 📅 {post.date} ⏰ {post.time}
+                </p>
+                <p>{post.desc}</p>
+                <p className="muted">📍 {post.venue}</p>
+              </div>
+
+              <button className="reject" onClick={() => deletePost(post.id)}>
+                🗑️ Delete
+              </button>
             </div>
           ))}
         </section>

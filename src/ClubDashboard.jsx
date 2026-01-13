@@ -58,23 +58,32 @@ const ClubDashboard = () => {
     window.location.href = "create-post.html";
   };
 
-  const goToCreatePost = () => {
-    localStorage.removeItem("editPostId");
-    window.location.href = "create-post.html";
+  const goToHome = () => {
+    window.location.href = "/home";
   };
 
   return (
     <>
       {/* HEADER */}
       <header className="header">
-        <div className="header-left">
+        <div className="header-left" onClick={goToHome}>
           <div className="logo-circle">
             <img src="/assets/logo.png" alt="logo" />
           </div>
           <span className="brand-name">Banverse</span>
         </div>
-        <div className="logout-circle" onClick={logout}>
-          Logout
+
+        <nav className="nav-menu">
+          <button className="nav-item" onClick={goToHome}>Home</button>
+          <button className="nav-item" onClick={() => window.location.href = "/about"}>About</button>
+          <button className="nav-item" onClick={() => window.location.href = "/contact"}>Contact</button>
+          <button className="nav-item active">Dashboard</button>
+        </nav>
+
+        <div className="header-right">
+          <div className="logout-circle" onClick={logout}>
+            Logout
+          </div>
         </div>
       </header>
 
@@ -109,7 +118,7 @@ const ClubDashboard = () => {
             </div>
           </div>
 
-          <button className="post-btn" onClick={goToCreatePost}>
+          <button className="post-btn">
             + Create Event
           </button>
         </div>

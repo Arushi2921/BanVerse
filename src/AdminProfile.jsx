@@ -8,16 +8,21 @@ function AdminProfile() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedAdmin =
-      JSON.parse(localStorage.getItem("admin")) ||
-      { name: "Admin", email: "admin@banverse.com" };
-
-    setAdmin(storedAdmin);
+    setAdmin(
+      JSON.parse(localStorage.getItem("admin")) || {
+        name: "Admin",
+        email: "admin@banverse.com",
+      }
+    );
   }, []);
 
-  const logout = () => {
-    localStorage.removeItem("role");
-    navigate("/login");
+  const getInitials = (name) => {
+    return name
+      .split(" ")
+      .map(word => word[0])
+      .join("")
+      .toUpperCase()
+      .slice(0, 2);
   };
 
   return (
@@ -29,22 +34,40 @@ function AdminProfile() {
           </div>
           <span className="brand-name">Banverse Admin</span>
         </div>
-        <div className="logout-circle" onClick={logout}>Logout</div>
+
+        <div className="header-nav">
+          <button className="profile-btn" onClick={() => navigate("/admindashboard")}>
+            🏠 Dashboard
+          </button>
+        </div>
       </header>
 
-      <main className="profile-container">
-        <h2>Admin Profile</h2>
+      <main className="profile">
+        <h2>👤 Admin Profile</h2>
 
-        <div className="profile-box">
-          <label>Name</label>
-          <input type="text" value={admin.name} readOnly />
-
-          <label>Email</label>
-          <input type="email" value={admin.email} readOnly />
+        <div className="profile-avatar">
+          {getInitials(admin.name)}
         </div>
 
-        <button onClick={() => navigate("/admin-dashboard")}>
-          Go to Dashboard
+        <div className="profile-card">
+          <div className="profile-field">
+            <label>👤 Name</label>
+            <input value={admin.name} readOnly />
+          </div>
+
+          <div className="profile-field">
+            <label>📧 Email</label>
+            <input value={admin.email} readOnly />
+          </div>
+
+          <div className="profile-field">
+            <label>🔑 Role</label>
+            <input value="Administrator" readOnly />
+          </div>
+        </div>
+
+        <button onClick={() => navigate("/admindashboard")}>
+          ← Back to Dashboard
         </button>
       </main>
     </>

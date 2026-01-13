@@ -19,15 +19,22 @@ function Contact() {
     <>
       {/* HEADER */}
       <header className="header">
-        <div className="header-left">
+        <div className="header-left" onClick={() => navigate("/home")}>
           <div className="logo-circle">
-            <img src={logo} alt="Banverse Logo" />
+            <img src={logo} alt="Banverse" />
           </div>
           <span className="brand-name">Banverse</span>
         </div>
 
-        <div className="dashboard-circle" onClick={goToDashboard}>
-          👤
+        <nav className="nav-menu">
+          <button className="nav-item" onClick={() => navigate("/home")}>Home</button>
+          <button className="nav-item" onClick={() => navigate("/about")}>About</button>
+          <button className="nav-item active">Contact</button>
+          <button className="nav-item" onClick={goToDashboard}>Dashboard</button>
+        </nav>
+
+        <div className="header-right">
+          <div className="dashboard-circle" onClick={goToDashboard}>👤</div>
         </div>
       </header>
 
