@@ -21,7 +21,6 @@ function AdminDashboard() {
     clubs.push(club);
     localStorage.setItem("clubs", JSON.stringify(clubs));
     localStorage.setItem("pendingClubs", JSON.stringify(pending));
-
     setPendingClubs(pending);
   };
 
@@ -37,11 +36,6 @@ function AdminDashboard() {
     setPosts(updated);
   };
 
-  const logout = () => {
-    localStorage.clear();
-    navigate("/login");
-  };
-
   return (
     <>
       {/* HEADER */}
@@ -53,25 +47,22 @@ function AdminDashboard() {
           <span className="brand-name">Banverse Admin</span>
         </div>
 
-        <nav className="nav-menu">
+        {/* CENTERED NAVBAR */}
+        <nav className="nav-menu nav-center">
+          <button className="nav-item" onClick={() => navigate("/home")}>Home</button>
+          <button className="nav-item" onClick={() => navigate("/about")}>About</button>
+          <button className="nav-item" onClick={() => navigate("/contact")}>Contact</button>
           <button className="nav-item active">Dashboard</button>
-          <button className="nav-item" onClick={() => navigate("/adminprofile")}>Profile</button>
-          <button className="nav-item" onClick={logout}>Logout</button>
         </nav>
-
-        <div className="header-right">
-        </div>
       </header>
 
       {/* DASHBOARD */}
       <main className="dashboard">
-        {/* Dashboard Header */}
         <div className="dashboard-header">
           <h2>Admin Dashboard</h2>
           <p>Manage clubs and monitor activities</p>
         </div>
 
-        {/* Statistics */}
         <div className="stats-container">
           <div className="stat-card">
             <div className="stat-number">{pendingClubs.length}</div>
@@ -89,13 +80,9 @@ function AdminDashboard() {
           </div>
         </div>
 
-        {/* Pending Clubs */}
         <section className="card">
           <h3>📋 Pending Clubs</h3>
-
-          {pendingClubs.length === 0 && (
-            <p className="empty">✨ No pending requests at the moment</p>
-          )}
+          {pendingClubs.length === 0 && <p className="empty">✨ No pending requests</p>}
 
           {pendingClubs.map(club => (
             <div className="item-card" key={club.id}>
@@ -104,41 +91,27 @@ function AdminDashboard() {
                 <p className="muted">📧 {club.email}</p>
                 <p>{club.description}</p>
               </div>
-
               <div className="actions">
-                <button className="approve" onClick={() => approveClub(club.id)}>
-                  ✓ Approve
-                </button>
-                <button className="reject" onClick={() => rejectClub(club.id)}>
-                  ✗ Reject
-                </button>
+                <button className="approve" onClick={() => approveClub(club.id)}>✓ Approve</button>
+                <button className="reject" onClick={() => rejectClub(club.id)}>✗ Reject</button>
               </div>
             </div>
           ))}
         </section>
 
-        {/* Posts */}
         <section className="card">
           <h3>📰 Club Posts</h3>
-
-          {posts.length === 0 && (
-            <p className="empty">📭 No posts available</p>
-          )}
+          {posts.length === 0 && <p className="empty">📭 No posts available</p>}
 
           {posts.map(post => (
             <div className="item-card" key={post.id}>
               <div className="item-content">
                 <h4>{post.title}</h4>
-                <p className="muted">
-                  🏢 {post.clubName} • 📅 {post.date} ⏰ {post.time}
-                </p>
+                <p className="muted">🏢 {post.clubName} • 📅 {post.date} ⏰ {post.time}</p>
                 <p>{post.desc}</p>
                 <p className="muted">📍 {post.venue}</p>
               </div>
-
-              <button className="reject" onClick={() => deletePost(post.id)}>
-                🗑️ Delete
-              </button>
+              <button className="reject" onClick={() => deletePost(post.id)}>🗑️ Delete</button>
             </div>
           ))}
         </section>

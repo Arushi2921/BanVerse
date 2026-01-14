@@ -163,3 +163,47 @@ body {
     padding: 25px;
   }
 }
+
+/* NAV ITEMS */
+.nav-item {
+  padding: 10px 22px;
+  border-radius: 20px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #555;
+  transition: 0.3s ease;
+}
+
+.nav-item:hover {
+  background: rgba(0,31,63,0.1);
+}
+
+.nav-item.active {
+  background: linear-gradient(135deg, #001f3f, #003d7a);
+  color: white;
+}
+
+/* LOGO */
+.logo-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #001f3f, #003d7a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-circle img {
+  width: 26px;
+  filter: brightness(0) invert(1);
+}
+
+.brand-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #001f3f;
+}

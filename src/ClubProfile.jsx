@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ClubProfile.css";
 
 const ClubProfile = () => {
+  const navigate = useNavigate();
   const [clubData, setClubData] = useState({
     clubName: "",
     description: "",
@@ -45,35 +47,55 @@ const ClubProfile = () => {
 
   const saveClubProfile = () => {
     localStorage.setItem("clubProfile", JSON.stringify(clubData));
-    alert("Club profile saved successfully!");
+    localStorage.setItem("clubName", clubData.clubName);
+    localStorage.setItem("clubDesc", clubData.description);
+    localStorage.setItem("clubEmail", clubData.email);
+    localStorage.setItem("clubPhone", clubData.phone);
+    localStorage.setItem("clubInstagram", clubData.instagram);
+    localStorage.setItem("clubLinkedIn", clubData.linkedin);
+    if (clubData.logoPreview) {
+      localStorage.setItem("clubLogo", clubData.logoPreview);
+    }
+    navigate("/clubdashboard");
   };
 
   const logout = () => {
-    alert("Logged out");
-    // navigate("/login") if using react-router
+    localStorage.removeItem("role");
+    navigate("/login");
   };
 
   return (
     <>
       {/* HEADER */}
       <header className="header">
-        <div className="header-left">
+        <div className="header-left" onClick={() => navigate("/home")}>
           <div className="logo-circle">
             <img src="assets/logo.png" alt="logo" />
           </div>
           <span className="brand-name">Banverse</span>
         </div>
 
-        <div className="logout-circle" onClick={logout}>
-          Logout
+        <nav className="nav-menu">
+          <button className="nav-item" onClick={() => navigate("/home")}>Home</button>
+          <button className="nav-item" onClick={() => navigate("/about")}>About</button>
+          <button className="nav-item" onClick={() => navigate("/contact")}>Contact</button>
+          <button className="nav-item active">Profile</button>
+        </nav>
+
+        <div className="header-right">
+          <button className="logout-btn" onClick={logout}>Logout</button>
         </div>
       </header>
 
       {/* PROFILE FORM */}
       <main className="profile-container">
-        <h2>Club Profile</h2>
+        <div className="profile-wrapper">
+          <div className="profile-header">
+            <h2>🏢 Club Profile</h2>
+            <p>Manage your club information and details</p>
+          </div>
 
-        <div className="profile-box">
+          <div className="profile-box">
           <label>Club Logo</label>
           <input type="file" accept="image/*" onChange={previewLogo} />
 
@@ -135,8 +157,10 @@ const ClubProfile = () => {
           />
 
           <button onClick={saveClubProfile}>
-            Save / Update Profile
+            ✓ Save / Update Profile
           </button>
+
+          </div>
         </div>
       </main>
     </>

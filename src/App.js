@@ -13,6 +13,10 @@ import AdminDashboard from "./AdminDashboard";
 import AdminProfile from "./AdminProfile";
 import About from "./About";
 import Contact from "./Contact";
+import ViewPost from "./ViewPost";
+import ViewClub from "./ViewClub";
+import CreatePost from "./CreatePost";
+
 
 function App() {
   return (
@@ -29,10 +33,11 @@ function App() {
 
         <Route path="/clubdashboard" element={<ClubDashboard />} />
         <Route path="/clubprofile" element={<ClubProfile />} />
-
+        <Route path="/createpost" element={<CreatePost />} />
         <Route path="/studentdashboard" element={<StudentDashboard />} />
         <Route path="/studentprofile" element={<StudentProfile />} />
-
+        <Route path="/viewpost" element={<ViewPost />} />
+        <Route path="/viewclub" element={<ViewClub />} />
         <Route path="/admindashboard" element={<AdminDashboard />} />
         <Route path="/adminprofile" element={<AdminProfile />} />
       </Routes>

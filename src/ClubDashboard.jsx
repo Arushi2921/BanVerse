@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ClubDashboard.css";
 
 const ClubDashboard = () => {
+  const navigate = useNavigate();
   const [club, setClub] = useState({
     name: "",
     desc: "",
@@ -40,7 +42,7 @@ const ClubDashboard = () => {
 
   const logout = () => {
     localStorage.removeItem("role");
-    window.location.href = "login.jsx";
+    navigate("/login");
   };
 
   const deletePost = (id) => {
@@ -55,11 +57,11 @@ const ClubDashboard = () => {
 
   const editPost = (id) => {
     localStorage.setItem("editPostId", id);
-    window.location.href = "create-post.html";
+    navigate("/CreatePost");
   };
 
   const goToHome = () => {
-    window.location.href = "/home";
+    navigate("/home");
   };
 
   return (
@@ -75,15 +77,16 @@ const ClubDashboard = () => {
 
         <nav className="nav-menu">
           <button className="nav-item" onClick={goToHome}>Home</button>
-          <button className="nav-item" onClick={() => window.location.href = "/about"}>About</button>
-          <button className="nav-item" onClick={() => window.location.href = "/contact"}>Contact</button>
+          <button className="nav-item" onClick={() => navigate("/about")}>About</button>
+          <button className="nav-item" onClick={() => navigate("/contact")}>Contact</button>
           <button className="nav-item active">Dashboard</button>
         </nav>
 
         <div className="header-right">
-          <div className="logout-circle" onClick={logout}>
-            Logout
-          </div>
+          <button className="edit-profile-btn" onClick={() => navigate("/clubprofile")}>
+            ⚙️ Edit Profile
+          </button>
+          <button className="logout-btn" onClick={logout}>Logout</button>
         </div>
       </header>
 
@@ -118,7 +121,7 @@ const ClubDashboard = () => {
             </div>
           </div>
 
-          <button className="post-btn">
+          <button className="post-btn" onClick={() => navigate("/CreatePost")}>
             + Create Event
           </button>
         </div>
